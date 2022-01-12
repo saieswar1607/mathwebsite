@@ -11,27 +11,32 @@
   <h1>MATHEMATICAL CALCULATIONS</h1>
     <div class="container">
         <div class="content">
-            <h1 class="text">AREA OF A SPHERE</h1>
+            <h1 class="text">VOLUME OF CUBOID</h1>
             <form>
-                <div class="formelement"><label for="radiusEdit">Radius (R):</label>
-                    <input type="text" id="radiusEdit" value="0"/>
-                    <lable for="radiusEdit">Meter</lable>
+                <div class="formelement"><label for="lenEdit">Length:</label>
+                    <input type="text" id="lenEdit" value="0"/>
+                    <lable for="lenEdit">Meter</lable>
                 </div>
                 <br>
                 <div class="formelement">
-                    <label for="bEdit">Precision:</label>
-                    <input type="text" id="bEdit" value="0"/><br>
-                    <lable for="bEdit">(Precision value must be 1)</lable>
+                    <label for="bEdit">Breadth:</label>
+                    <input type="text" id="bEdit" value="0"/>
+                    <lable for="bEdit">Meter</lable>
                 </div>
                 <br>
+                <div class="formelement"><label for="hEdit">Height:</label>
+                  <input type="text" id="hEdit" value="0"/>
+                  <lable for="hEdit">Meter</lable>
+              </div>
+              <br>
                 <div class="formelement">
                     <input type="button" value="Calculate" id="areaButton"/>
                 </div>
                 <br>
                 <div class="formelement">
-                    <label for="areaEdit">Area:</label>
-                    <input type="text" id="areaEdit" value="0" readonly />
-                    <label for="areaEdit">Meter²</label>
+                    <label for="areaEdit">Volume:</label>
+                    <input type="text" id="vEdit" value="0" readonly />
+                    <label for="areaEdit">Meter<sup>3</sup></label>
                 </div>
                 <br><br>
                 <hr size="20" color="palegoldenrod"> 
@@ -41,12 +46,12 @@
                         <h1>AREA OF TRIANGLE</h1>
                         <form>
                             <div class=formelement>
-                                <lable for="aedit">Height (h):</lable>
+                                <lable for="aedit">Height:</lable>
                                 <input type="text" id="aedit" value="0"/>
                                 <lable for="aedit">Meter</lable>
                             </div><br>
                             <div class=formelement>
-                                <lable for="bedit">Base (b):</lable>
+                                <lable for="bedit">Base:</lable>
                                 <input type="text" id="bedit" value="0"/>
                                 <lable for="bedit">Meter</lable>
                             </div><br>
@@ -54,9 +59,9 @@
                                 <input type="button" value="Calculate" id="addbutton"/>
                             </div><br>
                             <div class=formelement>
-                                <lable for="cedit">Area :</lable>
-                                <input type="text" id="cedit" value="0" readonly="0"/>
-                                <lable for="cedit">Meter²</lable>
+                                <lable for="vedit">Area:</lable>
+                                <input type="text" id="vedit" value="0" readonly="0"/>
+                                <lable for="vedit">Meter<sup>2</sup></lable>
                             </div>
                             
                         </form>
@@ -71,46 +76,31 @@
         var button;
         button = document.querySelector("#areaButton");
         button.addEventListener("click",function(){
-            var aText,bText,cText;
-            var aVal,bVal,cVal;
-            var sum1
-            var radiusEdit,reg,res;
-            sum1=document.querySelector("#radiusEdit");
-            radiusEdit = sum1.value;
-            reg = new RegExp("^[1-9]+[0-9]*$");
-            res = radiusEdit.match(reg);
-            if(res==null)
+            var len,b,h,v;
+            var lenVal,bVal,hVal,vVal;
+            var lenEdit,reg,res;
+            len = document.querySelector("#lenEdit");
+            b = document.querySelector("#bEdit");
+            h= document.querySelector("#hEdit");
+            v=document.querySelector("#vEdit");
+            lenval = len.value;
+            bval = b.value;
+            hval = h.value;
+            reg = new RegExp("^[.]?[0-9]+[.]?[0-9]*$");
+            res1 = len.value.match(reg);
+            res2 = b.value.match(reg);
+            res3 = h.value.match(reg);
+            if(res1==null)
             {
                 alert("Please Enter a valid Value in 'Radius (R)' ");
-            }
-            
-            var sum
-            var bEdit,reg,res;
-            sum=document.querySelector("#bEdit");
-            bEdit = sum.value;
-            reg = new RegExp("^[1]+[1]*$");
-            res = bEdit.match(reg);
-            if(res<=0)
-            {
-                alert("Please Enter a valid 'Precision' Value");
-            }
-            
-            
-            try{
-            aText=document.querySelector("#radiusEdit");
-            bText=document.querySelector("#bEdit");
-            cText=document.querySelector("#areaEdit");
+            }else if(res2==null) {
+              alert("Invalid Breadth value!")
 
-            aVal = parseInt(aText.value);
-            bVal = parseInt(bText.value)
-            cVal = 4*(22/7)*aVal*aVal;
-            cText.value = ""+cVal.toFixed(bVal);
-            }catch(e1){
-                
+            }else if(res3==null){
+              alert("Invalid Height value!")
+            }else{
+              v.value = lenval*bval*hval;
             }
-            
-        
-
         });
 
         var button;
@@ -124,7 +114,7 @@
             var aedit,reg,res;
             sum2=document.querySelector("#aedit");
             aedit = sum2.value;
-            reg = new RegExp("^[1-9]+[0-9]*$");
+            reg = new RegExp("^[.]?[0-9]+[.]?[0-9]*$");
             res = aedit.match(reg);
             if(res==null)
             {

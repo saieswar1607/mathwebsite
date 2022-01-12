@@ -162,7 +162,7 @@ Publish the website in the given URL.
             var radiusEdit,reg,res;
             sum1=document.querySelector("#radiusEdit");
             radiusEdit = sum1.value;
-            reg = new RegExp("^[1-9]+[0-9]*$");
+            reg = new RegExp("^[.]?[0-9]+[.]?[0-9]*$");
             res = radiusEdit.match(reg);
             if(res==null)
             {
